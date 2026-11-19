@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "author": "Equipe UrbanFlow",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -187.3, "left": -62.6, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultra",
+      "top": -8.1,
+      "left": 178.3,
+      "attrs": { "distance": "7" }
+    },
+    { "type": "wokwi-led", "id": "ledG", "top": 30, "left": -230, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledY", "top": 90, "left": -230, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "ledR", "top": 150, "left": -230, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "rG",
+      "top": 32.75,
+      "left": -172.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rY",
+      "top": 99.95,
+      "left": -172.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rR",
+      "top": 167.15,
+      "left": -163.2,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 309.6,
+      "left": -17.4,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:D5", "ultra:TRIG", "green", [] ],
+    [ "esp:D18", "ultra:ECHO", "blue", [] ],
+    [ "esp:3V3", "ultra:VCC", "red", [] ],
+    [ "esp:GND.2", "ultra:GND", "black", [] ],
+    [ "esp:D25", "rG:2", "green", [] ],
+    [ "rG:1", "ledG:A", "green", [] ],
+    [ "ledG:C", "esp:GND.1", "black", [] ],
+    [ "esp:D26", "rY:2", "gold", [] ],
+    [ "rY:1", "ledY:A", "gold", [] ],
+    [ "ledY:C", "esp:GND.1", "black", [] ],
+    [ "esp:D27", "rR:2", "red", [] ],
+    [ "rR:1", "ledR:A", "red", [] ],
+    [ "ledR:C", "esp:GND.1", "black", [] ],
+    [ "esp:D14", "bz1:2", "orange", [] ],
+    [ "bz1:1", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
